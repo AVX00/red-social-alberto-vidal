@@ -20,8 +20,11 @@ const UserForm = ({ isLogin }) => {
       [event.target.id]: event.target.value,
     });
   };
+  const onSubmit = (event) => {
+    event.preventDefault();
+  };
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div className="form-group">
         <label htmlFor="username">username</label>
         <input
