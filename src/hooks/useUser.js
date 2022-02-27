@@ -7,8 +7,6 @@ const useUser = () => {
   const loginUser = useCallback(
     async (userData) => {
       const loginEndPoint = `${process.env.REACT_APP_API}user/login`;
-      console.log(userData);
-      console.log(loginEndPoint);
       try {
         const response = await fetch(loginEndPoint, {
           method: "post",
