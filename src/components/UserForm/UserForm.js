@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import useUser from "../hooks/useUser";
+import useUser from "../../hooks/useUser";
 
 const Form = styled.form`
   box-sizing: border-box;
