@@ -40,6 +40,10 @@ const UserForm = ({ isLogin }) => {
 
   const [formData, setFormData] = useState(emptyForm);
 
+  const isFilled = isLogin
+    ? formData.username && formData.password
+    : formData.name && formData.username && formData.password;
+
   const handleDataChange = (event) => {
     setFormData({
       ...formData,
@@ -50,6 +54,7 @@ const UserForm = ({ isLogin }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     actionOnSubmit(formData);
+    setFormData(emptyForm);
   };
   return (
     <Form onSubmit={onSubmit}>
@@ -91,7 +96,9 @@ const UserForm = ({ isLogin }) => {
           autoComplete="false"
         />
       </div>
-      <button type="submit">{isLogin ? "Log In" : "Sign in"}</button>
+      <button disabled={!isFilled} type="submit">
+        {isLogin ? "Log In" : "Sign in"}
+      </button>
     </Form>
   );
 };
