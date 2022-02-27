@@ -5,7 +5,7 @@ import UserContext from "./UserContext";
 const UserContextProvider = ({ children }) => {
   const [user, dispatch] = useReducer(userReducer, "");
   return (
-    <UserContext.Provider value={(user, dispatch)}>
+    <UserContext.Provider value={{ user, dispatch }}>
       {children}
     </UserContext.Provider>
   );
