@@ -1,6 +1,8 @@
 import { useState } from "react";
+import useUser from "../hooks/useUser";
 
 const UserForm = ({ isLogin }) => {
+  const { loginUser } = useUser();
   const emptyForm = isLogin
     ? {
         username: "",
@@ -20,8 +22,10 @@ const UserForm = ({ isLogin }) => {
       [event.target.id]: event.target.value,
     });
   };
+  const actionOnSubmit = isLogin ? loginUser : () => {};
   const onSubmit = (event) => {
     event.preventDefault();
+    actionOnSubmit(formData);
   };
   return (
     <form onSubmit={onSubmit}>
