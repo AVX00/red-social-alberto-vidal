@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import UserForm from "../components/UserForm";
+import UserForm from "../components/UserForm/UserForm";
 
 const FormContainer = styled.div`
   margin: 0 auto;

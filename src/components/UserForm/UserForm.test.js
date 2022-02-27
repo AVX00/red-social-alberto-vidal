@@ -1,8 +1,8 @@
 import { screen } from "@testing-library/react";
 import UserForm from "./UserForm";
 import userEvent from "@testing-library/user-event";
-import UserContextProvider from "../store/constexts/userContext/UserContextProvider";
-import { renderInRouter } from "../setupTests";
+import UserContextProvider from "../../store/constexts/userContext/UserContextProvider";
+import { renderInRouter } from "../../setupTests";
 
 describe("Given a UserForm component", () => {
   describe("When it's rendered with isLogin ture", () => {
