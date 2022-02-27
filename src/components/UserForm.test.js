@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import UserForm from "./UserForm";
 import userEvent from "@testing-library/user-event";
 import UserContextProvider from "../store/constexts/userContext/UserContextProvider";

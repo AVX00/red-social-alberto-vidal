@@ -25,21 +25,24 @@ const useUser = () => {
     [dispatch]
   );
 
-  const registerUser = useCallback(async (userData) => {
-    const registerEndPoint = `${process.env.REACT_APP_API}user/register`;
-    try {
-      const response = await fetch(registerEndPoint, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
-      if (response.ok) {
-        dispatch(loadUserActionCreator(userData.username));
-      }
-    } catch (error) {}
-  }, []);
+  const registerUser = useCallback(
+    async (userData) => {
+      const registerEndPoint = `${process.env.REACT_APP_API}user/register`;
+      try {
+        const response = await fetch(registerEndPoint, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
+        if (response.ok) {
+          dispatch(loadUserActionCreator(userData.username));
+        }
+      } catch (error) {}
+    },
+    [dispatch]
+  );
 
   return { loginUser, registerUser };
 };
