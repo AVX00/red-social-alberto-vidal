@@ -1,9 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import UserForm from "./UserForm";
-import useUser from "../hooks/useUser";
-
 import userEvent from "@testing-library/user-event";
-import React from "react";
+import React, { useCallback } from "react";
 import UserContextProvider from "../store/constexts/userContext/UserContextProvider";
 
 describe("Given a UserForm component", () => {
@@ -122,7 +120,6 @@ describe("Given a UserForm component", () => {
       const submitButton = screen.getByRole("button", {
         name: buttonName,
       });
-      fireEvent.submit(submitButton);
 
       userEvent.type(usernameLabel, "astusathu");
       userEvent.type(passwordLabel, "uaestuitd");
