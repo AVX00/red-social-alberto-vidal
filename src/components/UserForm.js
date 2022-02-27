@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useUser from "../hooks/useUser";
 
@@ -26,7 +27,8 @@ const Form = styled.form`
 `;
 
 const UserForm = ({ isLogin }) => {
-  const { loginUser } = useUser();
+  const navigate = useNavigate();
+  const { loginUser, registerUser } = useUser();
   const emptyForm = isLogin
     ? {
         username: "",
@@ -50,11 +52,13 @@ const UserForm = ({ isLogin }) => {
       [event.target.id]: event.target.value,
     });
   };
-  const actionOnSubmit = isLogin ? loginUser : () => {};
+  const actionOnSubmit = isLogin ? loginUser : registerUser;
+
   const onSubmit = (event) => {
     event.preventDefault();
     actionOnSubmit(formData);
     setFormData(emptyForm);
+    navigate("/login");
   };
   return (
     <Form onSubmit={onSubmit}>

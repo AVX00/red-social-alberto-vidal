@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import UserForm from "./UserForm";
 import userEvent from "@testing-library/user-event";
-import React, { useCallback } from "react";
 import UserContextProvider from "../store/constexts/userContext/UserContextProvider";
+import { renderInRouter } from "../setupTests";
 
 describe("Given a UserForm component", () => {
   describe("When it's rendered with isLogin ture", () => {
@@ -11,7 +11,7 @@ describe("Given a UserForm component", () => {
       const expectedPasswordLabel = /password/i;
       const expectedNameLabel = /^name/i;
 
-      render(<UserForm isLogin={true} />);
+      renderInRouter(<UserForm isLogin={true} />);
       const usernameLabel = screen.getByLabelText(expectedUsernameLabel);
       const passwordLabel = screen.getByLabelText(expectedPasswordLabel);
       const nameLabel = screen.queryByLabelText(expectedNameLabel);
@@ -28,7 +28,7 @@ describe("Given a UserForm component", () => {
       const expectedPasswordLabel = /password/i;
       const expetedNameLabel = /^name/i;
 
-      render(<UserForm isLogin={false} />);
+      renderInRouter(<UserForm isLogin={false} />);
       const usernameLabel = screen.getByLabelText(expectedUsernameLabel);
       const passwordLabel = screen.getByLabelText(expectedPasswordLabel);
       const nameLabel = screen.getByLabelText(expetedNameLabel);
@@ -43,7 +43,7 @@ describe("Given a UserForm component", () => {
     test("Then the submit button should be disabled", () => {
       const buttonName = /sign in/i;
 
-      render(<UserForm isLogin={false} />);
+      renderInRouter(<UserForm isLogin={false} />);
       const submitButton = screen.getByRole("button", { name: buttonName });
 
       expect(submitButton).toBeDisabled();
@@ -54,7 +54,7 @@ describe("Given a UserForm component", () => {
     test("Then the submit button should be disabled", () => {
       const buttonName = /sign in/i;
 
-      render(<UserForm isLogin={false} />);
+      renderInRouter(<UserForm isLogin={false} />);
       const submitButton = screen.getByRole("button", { name: buttonName });
 
       expect(submitButton).toBeDisabled();
@@ -67,7 +67,7 @@ describe("Given a UserForm component", () => {
       const expectedPasswordLabel = /password/i;
       const buttonName = /log in/i;
 
-      render(<UserForm isLogin={true} />);
+      renderInRouter(<UserForm isLogin={true} />);
       const usernameLabel = screen.getByLabelText(expectedUsernameLabel);
       const passwordLabel = screen.getByLabelText(expectedPasswordLabel);
       const submitButton = screen.getByRole("button", {
@@ -88,7 +88,7 @@ describe("Given a UserForm component", () => {
       const expetedNameLabel = /^name/i;
       const buttonName = /sign in/i;
 
-      render(<UserForm isLogin={false} />);
+      renderInRouter(<UserForm isLogin={false} />);
       const usernameLabel = screen.getByLabelText(expectedUsernameLabel);
       const passwordLabel = screen.getByLabelText(expectedPasswordLabel);
       const nameLabel = screen.getByLabelText(expetedNameLabel);
@@ -110,7 +110,7 @@ describe("Given a UserForm component", () => {
       const expectedPasswordLabel = /password/i;
       const buttonName = /log in/i;
 
-      render(
+      renderInRouter(
         <UserContextProvider>
           <UserForm isLogin={true} />
         </UserContextProvider>
