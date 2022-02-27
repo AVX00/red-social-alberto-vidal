@@ -1,5 +1,29 @@
 import { useState } from "react";
+import styled from "styled-components";
 import useUser from "../hooks/useUser";
+
+const Form = styled.form`
+  box-sizing: border-box;
+  width: 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  & .form-group {
+    width: 100%;
+    & label {
+      line-height: 100px;
+      margin: 20px;
+      width: 70px;
+      display: inline-block;
+    }
+
+    & input {
+      padding: 4px;
+      width: 200px;
+    }
+  }
+`;
 
 const UserForm = ({ isLogin }) => {
   const { loginUser } = useUser();
@@ -28,7 +52,7 @@ const UserForm = ({ isLogin }) => {
     actionOnSubmit(formData);
   };
   return (
-    <form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit}>
       <div className="form-group">
         <label htmlFor="username">username</label>
         <input
@@ -68,7 +92,7 @@ const UserForm = ({ isLogin }) => {
         />
       </div>
       <button type="submit">{isLogin ? "Log In" : "Sign in"}</button>
-    </form>
+    </Form>
   );
 };
 
