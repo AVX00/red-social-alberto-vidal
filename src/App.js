@@ -1,9 +1,14 @@
-import { Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import UserForm from "./components/UserForm";
-import Login from "./pages/Login";
 
 function App() {
-  return <Route path="/login" element={Login} />;
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/login" element={<UserForm isLogin={true} />} />
+      <Route path="/register" element={<UserForm isLogin={false} />} />
+    </Routes>
+  );
 }
 
 export default App;
