@@ -9,6 +9,7 @@ const usersReducer = (currentUsers, action) => {
     case usersActionTypes.addFriend:
       break;
     case usersActionTypes.loadUsers:
+      newUsers = [...action.users];
       break;
 
     default:
