@@ -1,4 +1,5 @@
 const Users = () => {
+  const users = [];
   return (
     <div className="container">
       <ul>
