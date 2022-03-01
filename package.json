@@ -41,5 +41,12 @@
   },
   "devDependencies": {
     "msw": "^0.38.1"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/reportWebVitals.js",
+      "!scr/mocks"
+    ]
   }
 }
